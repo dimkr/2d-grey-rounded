@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=X-GNOME-Metatheme
-Name=Flat-grey-rounded
+Name=2D-grey-rounded
 Version=v1.0
 Encoding=UTF-8
 
 [X-GNOME-Metatheme]
-GtkTheme=Flat-grey-rounded
+GtkTheme=2D-grey-rounded
 ButtonLayout=:minimize,maximize,close
