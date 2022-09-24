@@ -1,0 +1,900 @@
+/**
+ * Copyright (c) 2017 Vlasta Vesely <vlastavesely@protonmail.ch>
+ *
+ * This file is part of Raleigh Reloaded GTK theme.
+ *
+ * This is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/***********
+ * general *
+ ***********/
+* {
+	-gtk-icon-style: regular; /* disable symbolic icons */
+}
+.background {
+	background-color: @theme_bg_color;
+	color: @theme_fg_color;
+}
+*:disabled {
+	color: #6f6f6f;
+	text-shadow: 1px 1px @theme_base_color;
+	-gtk-icon-filter: opacity(0.5);
+}
+.flat:not(button):not(modelbutton):not(:hover):not(:checked) {
+	border: 0;
+}
+
+/*************
+ * selection *
+ *************/
+selection,
+.view:selected {
+	background: #526f88;
+	color: white;
+}
+.rubberband,
+.view.rubberband,
+rubberband {
+	background-color: alpha(@theme_selected_bg_color, 0.3);
+	border: 1px solid @theme_selected_bg_color;
+}
+
+/***********
+ * buttons *
+ ***********/
+button.flat {
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: 3px;
+	padding: .35em;
+}
+button:not(.flat),
+.button {
+	background-color: #D2D4D2;
+	border: 1px solid #989B98;
+	border-radius: 3px;
+	padding: .35em;
+	margin: 1px;
+}
+button:hover, .button:hover {
+	background-color: @theme_selected_bg_color;
+	border: 1px solid black;
+}
+button:active, .button:active,
+button:active:hover, .button:active:hover,
+button.toggle:checked,
+button.toggle:active:hover,
+stackswitcher button:checked {
+	background-color: @theme_selected_bg_color;
+	border: 1px solid black;
+}
+button:disabled, .button:disabled {
+	background-image: linear-gradient(to bottom, white 80%, #e9e8e9);
+	border: 1px solid #A4A7A4;
+}
+button.link {
+	color: @link_color;
+}
+button.link > label {
+	text-decoration-line: underline;
+}
+button.color * {
+	border: 1px solid #989B98;
+	border-radius: 3px;
+	margin: 0 .3em;
+	min-height: 1.2em;
+}
+button.toggle:checked:disabled  {
+	border: 1px solid #A4A7A4;
+}
+
+/**************
+ * scrollbars *
+ **************/
+scrollbar button {
+	background-color: #D2D4D2;
+	border: 1px solid #989B98;
+	border-radius: 3px;
+	padding: .35em;
+}
+scrollbar button:hover,
+scrollbar button:active,
+scrollbar button:active:hover {
+	background-color: @theme_selected_bg_color;
+	border: 1px solid black;
+}
+scrollbar button:disabled {
+	background-image: linear-gradient(to bottom, white 80%, #e9e8e9);
+	border: 1px solid #A4A7A4;
+}
+scrollbar slider {
+	background-color: @theme_selected_bg_color;
+	border: 1px solid black;
+	border-radius: 3px;
+}
+scrollbar.vertical slider {
+	min-height: .5rem;
+	min-width: .8rem;
+}
+scrollbar.horizontal slider {
+	min-height: .8rem;
+	min-width: .5rem;
+}
+scrollbar.vertical button.up {
+	min-height: 0.25rem;
+	-gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+}
+scrollbar.vertical button.down {
+	min-height: 0.25rem;
+	-gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+}
+scrollbar.horizontal button.up {
+	min-width: 0.25rem;
+	-gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
+}
+scrollbar.horizontal button.down {
+	min-width: 0.25rem;
+	-gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+}
+
+/*********************
+ * checks and radios *
+ *********************/
+check, radio, .view.cellradio {
+	margin: .3em .4em .3em .3em;
+	min-height: 13px;
+	min-width: 13px;
+}
+checkbutton:hover, radiobutton:hover {
+	background-color: @theme_selected_bg_color;
+}
+checkbutton label, radiobutton label {
+	padding-right: .5em;
+}
+check {
+	background: white;
+	border: 1px solid black;
+}
+check:checked {
+	-gtk-icon-source: url("assets/check.svg");
+}
+check:disabled {
+	background: #eeebe7;
+	border: 1px solid #757575;
+}
+check:indeterminate {
+	-gtk-icon-source: url("assets/indeterminate.svg");
+}
+
+/******************
+ * radion buttons *
+ ******************/
+radio, .view.cellradio {
+	background: white;
+	border: 1px solid black;
+	border-radius: 100%;
+}
+radio:checked {
+	-gtk-icon-source: url("assets/radio.svg");
+}
+radio:disabled {
+	background: #eeebe7;
+	border: 1px solid #757575;
+}
+radio:indeterminate {
+	-gtk-icon-source: url("assets/indeterminate.svg");
+}
+
+/****************
+ * text entries *
+ ****************/
+entry {
+	background: @theme_base_color;
+	border: 1px solid #9e9a91;
+	padding: .25em;
+}
+entry:disabled {
+	background-color: #eeebe7;
+}
+
+/****************
+ * spin buttons *
+ ****************/
+spinbutton {
+	background: @theme_bg_color;
+	border-top: 1px solid #9e9a91;
+	border-left: 1px solid #9e9a91;
+	border-right: 1px solid white;
+	border-bottom: 1px solid white;
+}
+spinbutton text {
+	background: @theme_base_color;
+}
+spinbutton button {
+	background-color: #D2D4D2;
+}
+
+/**************
+ * comboboxes *
+ **************/
+combobox arrow {
+	-gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+	color: @theme_fg_color;
+	margin: -2px;
+}
+
+/*********
+ * menus *
+ *********/
+
+menubar {
+	border-bottom: 1px solid #9e9a91;
+}
+menubar decoration,
+.popup decoration {
+	border: 0;
+}
+menu {
+	background: @theme_bg_color;
+	border: 1px solid black;
+	padding: 1px;
+}
+menubar > item {
+	padding: .2em .4em;
+	border: 1px solid transparent;
+	border-radius: 3px;
+}
+menubar > item:hover {
+	background-color: #D2D4D2;
+	border: 1px solid #989B98;
+}
+item {
+	margin: 1px;
+	padding: 1px 6px;
+	border: 1px solid transparent;
+	border-radius: 3px;
+}
+item:hover {
+	background-color: #D2D4D2;
+	border: 1px solid #989B98;
+}
+menu separator {
+	border-top: 1px solid #9e9a91;
+	min-height: 1px;
+	margin: .2em .4em;
+}
+item > image {
+	min-height: 1em;
+	min-width: 1em;
+}
+item > arrow {
+	font-size: 1.2em;
+	margin: -.2em 0 -.2em 1em;
+	-gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+}
+menu arrow.top,
+.menu arrow.top {
+	-gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+}
+menu arrow.bottom,
+.menu arrow.bottom {
+	-gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+}
+
+/*************
+ * notebooks *
+ *************/
+notebook {
+	padding: 0;
+}
+notebook.frame {
+	border: 1px solid #9e9a91;
+}
+notebook header {
+	background: @theme_bg_color;
+}
+notebook header.top {
+	padding-bottom: 2px;
+}
+notebook header.bottom {
+	padding-top: 2px;
+}
+notebook header.left {
+	padding-right: 2px;
+}
+notebook header.right {
+	padding-left: 2px;
+}
+notebook tab,
+notebook.frame > .frame {
+	background: shade(@theme_bg_color, .9);
+	padding: .3em .4em;
+}
+notebook header.top tab,
+notebook.frame > .frame.top {
+	background-color: #D2D4D2;
+	border: 1px solid #989B98;
+	border-radius: 3px;
+	padding: 5px;
+}
+notebook header.bottom tab,
+notebook.frame > .frame.bottom {
+	background-color: #D2D4D2;
+	border: 1px solid #989B98;
+	border-radius: 3px;
+	padding: 5px;
+}
+notebook header.left tab,
+notebook.frame > .frame.left {
+	background-color: #D2D4D2;
+	border: 1px solid #989B98;
+	border-radius: 3px;
+	padding: 5px;
+}
+notebook header.right tab,
+notebook.frame > .frame.right {
+	background-color: #D2D4D2;
+	border: 1px solid #989B98;
+	border-radius: 3px;
+	padding: 5px;
+}
+notebook header tab:checked,
+notebook.frame > .frame:active {
+	background-color: @theme_selected_bg_color;
+	border: 1px solid black;
+}
+notebook tab button {
+	background-color: transparent;
+	border: 1px solid transparent;
+}
+notebook.frame > .frame {
+	padding: .15rem;
+}
+
+/**********
+ * Arrows *
+ **********/
+arrow {
+	min-width: 1.2rem;
+	min-height: 1.2rem;
+}
+
+/************
+ * expander *
+ ************/
+expander arrow {
+	-gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+}
+expander arrow:checked {
+	-gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+}
+
+/********************************
+ * CSD header and window border *
+ ********************************/
+headerbar, .titlebar {
+	background-color: #e2e2de;
+	padding: 3px;
+}
+decoration {
+	background-color: #D2D4D2;
+	border: 1px solid black;
+}
+
+/****************************
+ * application notification *
+ ****************************/
+.app-notification {
+	background-color: @theme_info_bg_color;
+	border: 1px solid #9e9a91;
+	padding: 7px;
+}
+.app-notification border {
+	border: 0;
+}
+
+/************
+ * popovers *
+ ************/
+popover {
+	border: 1px solid transparent;
+	border: 1px solid #9e9a91;
+}
+popover.background {
+	border: 1px solid #9e9a91;
+}
+popover.menu.background {
+	border: 1px solid black;
+}
+popover.menu.contents {
+	border: none;
+}
+popover.contents {
+	border: none;
+}
+popover .flat {
+	border: none;
+	padding: 5px;
+}
+modelbutton.flat {
+	border: 1px solid transparent;
+	border-radius: 3px;
+	margin: 1px;
+}
+modelbutton.flat:hover {
+	background-color: #D2D4D2;
+	border: 1px solid #989B98;
+}
+
+/***********
+ * toolbar *
+ ***********/
+toolbar {
+	border-bottom: 1px solid #9e9a91;
+	padding: 1px;
+}
+toolbar separator {
+	border-left: 1px solid #9e9a91;
+	margin: 5px;
+	padding: 1px;
+}
+toolbar button {
+	background: none;
+	border: 1px solid transparent;
+	border-radius: 3px;
+	padding: .35em;
+}
+toolbar button:hover {
+	background-color: @theme_selected_bg_color;
+	border: 1px solid black;
+}
+toolbar button:disabled {
+	background: none;
+	border: 1px solid transparent;
+}
+toolbar entry {
+	margin: 6px;
+}
+/*************
+ * statusbar *
+ *************/
+statusbar button {
+	padding: 2px;
+}
+statusbar button:active:hover,
+statusbar button.toggle:checked,
+statusbar button.toggle:active:hover {
+	padding: 3px 1px 1px 3px;
+}
+statusbar frame,
+statusbar > label {
+	border: 1px solid #9e9a91;
+}
+statusbar frame {
+	padding: 0;
+}
+statusbar frame > border {
+	border: 0;
+}
+statusbar {
+	margin: 0 -9px;
+}
+
+/*************
+ * listboxes *
+ *************/
+list row {
+	padding: 5px;
+	border: 1px solid transparent;
+}
+list row:hover {
+	background-color: @theme_selected_bg_color;
+	border: 1px solid black;
+	border-radius: 3px;
+}
+
+/**************
+ * separators *
+ **************/
+separator.horizontal {
+	border-top: 1px solid #9e9a91;
+	padding: 1px;
+}
+separator.vertical {
+	border-left: 1px solid #9e9a91;
+	padding: 1px;
+}
+
+/*********
+ * paned *
+ *********/
+paned > separator {
+	background: #9e9a91;
+	-gtk-icon-source: none;
+	padding: 1px;
+}
+paned > separator:hover {
+	background-color: @theme_selected_bg_color;
+}
+paned.vertical > separator {
+	background: #9e9a91;
+}
+
+/**********
+ * frames *
+ **********/
+frame > border {
+	border: 1px solid #9e9a91;
+	padding: 2px;
+}
+frame { /* LibreOffice combobox's dropdown */
+	border: 1px solid black;
+	padding: 3px;
+}
+box > frame,
+grid > frame {
+	border: 0;
+	padding: 0;
+}
+viewport.frame {
+	border: 1px solid #9e9a91;
+}
+scrolledwindow > viewport,
+scrolledwindow > viewport.frame {
+	border: 0;
+}
+
+/**************
+ * button box *
+ **************/
+buttonbox.horizontal button {
+	margin: .2em .4em;
+}
+buttonbox.horizontal button:first-child {
+	margin-left: 0;
+}
+buttonbox.horizontal button:last-child {
+	margin-right: 0;
+}
+progressbar trough,
+levelbar trough,
+scale trough,
+treeview.view.trough,
+treeview.view.trough:selected,
+scrollbar {
+	background-color: #D2D4D2;
+	border: 1px solid #989B98;
+	border-radius: 3px;
+}
+
+/*********
+ * scale *
+ *********/
+scale {
+	margin: 1px;
+}
+scale slider {
+	background-color: @theme_selected_bg_color;
+	border-radius: 3px;
+	border: 1px solid black;
+}
+scale slider:disabled,
+scale trough:disabled {
+	background-image: linear-gradient(to bottom, white 80%, #e9e8e9);
+	border: 1px solid #A4A7A4;
+}
+scale.horizontal trough {
+	padding: 0 1.2em;
+}
+scale.vertical trough {
+	padding: 1.2em 0;
+}
+scale.horizontal slider {
+	min-height: 0.8em;
+	min-width: 2.4em;
+}
+scale.vertical slider {
+	min-height: 2.4em;
+	min-width: 0.8em;
+}
+scale.horizontal mark indicator {
+	background-color: @theme_selected_bg_color;
+	min-height: 8px;
+	min-width: 1px;
+}
+scale.vertical mark indicator {
+	background-color: @theme_selected_bg_color;
+	min-height: 1px;
+	min-width: 8px;
+}
+
+/***************
+ * color scale *
+ ***************/
+scale.color trough {
+	padding: 0;
+}
+scale.color slider {
+	background-color: transparent;
+	border: 0;
+}
+scale.color.horizontal slider {
+	background-image: url("assets/color-scale-slider-horizontal.svg");
+	min-height: 14px;
+	min-width: 16px;
+}
+scale.color.vertical slider {
+	background-image: url("assets/color-scale-slider-vertical.svg");
+	min-height: 16px;
+	min-width: 14px;
+}
+
+/***************
+ * progressbar *
+ ***************/
+progressbar {
+	font-size: .8em;
+}
+progressbar trough {
+	padding: 2px;
+}
+progressbar progress,
+treeview.view.progressbar {
+	background-color: @theme_selected_bg_color;
+	border: 1px solid black;
+	border-radius: 3px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+progressbar.horizontal,
+progressbar.horizontal progress,
+progressbar.horizontal trough {
+	min-height: 1.3em;
+}
+progressbar.vertical,
+progressbar.vertical progress,
+progressbar.vertical trough {
+	min-width: 1.3em;
+}
+treeview.view.trough {
+	padding: 2px;
+}
+
+/************
+ * levelbar *
+ ************/
+levelbar block {
+	margin: 1px;
+	padding: 3px;
+}
+levelbar block.filled {
+	background-color: @theme_selected_bg_color;
+	border: 1px solid black;
+	border-radius: 3px;
+	margin: 1px;
+}
+
+/**********
+ * switch *
+ **********/
+switch {
+	background-color: #D2D4D2;
+	border: 1px solid #989B98;
+	border-radius: 3px;
+	min-height: 2em;
+}
+switch slider {
+	background-color: #D2D4D2;
+	border: 1px solid #989B98;
+	border-radius: 3px;
+	margin: 2px;
+	padding: .3em;
+}
+switch:hover, switch:hover slider {
+	background-color: @theme_selected_bg_color;
+	border: 1px solid black;
+}
+switch:checked slider {
+	background-color: @theme_selected_bg_color;
+	border: 1px solid black;
+}
+
+/************
+ * treeview *
+ ************/
+.view {
+	background: @theme_base_color;
+}
+
+/************
+ * tooltips *
+ ************/
+tooltip,
+tooltip.background  {
+	background-color: @theme_bg_color;
+	border: solid 1px black;
+	color: black;
+}
+tooltip *, .tooltip * {
+	background-color: transparent;
+}
+tooltip decoration {
+	border: 0;
+}
+
+/*************
+ * calendars *
+ *************/
+calendar {
+	padding: 2px;
+}
+calendar.header {
+	background: @theme_bg_color;
+}
+calendar.view {
+	border: 1px solid #9e9a91;
+}
+calendar:indeterminate {
+	color: alpha(@theme_fg_color, 0.4);
+}
+calendar.highlight {
+	background-color: @theme_selected_bg_color;
+	color: @theme_selected_fg_color;
+}
+
+/************
+ * infobars *
+ ************/
+.info {
+	background-color: @theme_info_bg_color;
+}
+.warning {
+	background-color: @theme_warning_bg_color;
+}
+.error {
+	background-color: @theme_error_bg_color;
+}
+.info, .warning, .error {
+	border: 1px solid #9e9a91;
+}
+
+/**************
+ * actionbars *
+ **************/
+actionbar {
+	border-top: solid 1px shade(@theme_bg_color, .8);
+	padding: 7px;
+}
+
+/***********
+ * sidebar *
+ ***********/
+.sidebar {
+	background: white;
+}
+.sidebar label {
+	padding: .3em 1em;
+}
+.sidebar label.highlight {
+	font-weight: bold;
+}
+
+/***********************
+ * file chooser dialog *
+ ***********************/
+dialog filechooser placessidebar.sidebar {
+	background: @theme_bg_color;
+}
+dialog filechooser placessidebar.sidebar.frame .sidebar-row {
+	padding: .3em 1em;
+}
+dialog filechooser .frame.sidebar .sidebar-row label {
+	padding: 0;
+	padding-left: .8em;
+}
+dialog filechooser placessidebar button {
+	background: transparent;
+	border: 0;
+	padding: 0;
+}
+dialog filechooser placessidebar.sidebar viewport {
+	border: none;
+}
+dialog filechooser placessidebar *:hover button {
+	background-color: transparent;
+}
+dialog filechooser stack {
+	background: @theme_bg_color;
+}
+dialog filechooser .path-bar .slider-button,
+dialog filechooser .path-bar .slider-button:active {
+	padding: 5px 0;
+}
+dialog filechooser .path-bar image {
+	margin-right: 5px;
+}
+dialog filechooser .frame.sidebar separator {
+	border-top: 1px solid #9e9a91;
+	margin: 3px 5px;
+	padding: 1px;
+}
+dialog filechooser actionbar {
+	border: solid 1px shade(@theme_bg_color, .6);
+	margin-top: 5px;
+	padding: 7px;
+}
+dialog filechooser frame {
+	padding: 0;
+}
+dialog filechooser frame border {
+	border: 0;
+}
+
+/*****************
+ * color chooser *
+ *****************/
+dialog colorchooser colorswatch {
+	border: 1px solid #9e9a91;
+	padding: 2px;
+}
+dialog colorchooser colorswatch.dark * {
+	color: white;
+}
+dialog colorchooser colorswatch.light * {
+	color: black;
+}
+dialog colorchooser #add-color-button {
+	border: 1px solid #9e9a91;
+}
+dialog colorchooser colorswatch:selected * {
+	background: transparent;
+}
+colorchooser .popover {
+	background: @theme_bg_color;
+	border: 1px solid #9e9a91;
+}
+*:disabled colorswatch {
+  opacity: .4;
+}
+
+/****************
+ * print dialog *
+ ****************/
+printdialog > box > box {
+	padding: 5px;
+	background: @theme_bg_color;
+}
+printdialog notebook stack {
+	border: 1px solid #9e9a91;
+	padding: 2px;
+}
+printdialog paper {
+	background-color: @theme_base_color;
+	border: solid 1px shade(@theme_bg_color, .6);
+}
+
+/*********************
+ * Spinner Animation *
+ *********************/
+@keyframes spin {
+	to { -gtk-icon-transform: rotate(1turn); }
+}
+spinner {
+	background-color: transparent;
+	opacity: 0;
+}
+spinner:checked {
+	opacity: 1;
+	animation: spin 1s linear infinite;
+}
